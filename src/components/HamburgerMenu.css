@@ -1,0 +1,217 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HAMBURGER MENU & NAVIGATION OVERLAY (OPTION TAB) — FURNITURE STUDIO GANGTOK
+   Sleek 3-line icon + Glassmorphic Frosted Glass Overlay inside .phone-frame
+   Sleek Left-Aligned Links with Bodoni Moda Typography
+   Uses --u calc system for seamless fluid scaling
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Hamburger Icon (3 horizontal lines, height 1px, #ffffff) ────────────── */
+.hamburger {
+  position: absolute;
+  top: calc(13 * var(--u));
+  right: calc(20 * var(--u));
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: calc(6 * var(--u));
+  width: calc(32 * var(--u));
+  height: calc(32 * var(--u));
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: calc(4 * var(--u)) 0;
+  transition: opacity 0.25s ease;
+}
+
+.hamburger:hover {
+  opacity: 0.8;
+}
+
+.hamburger__line {
+  display: block;
+  height: 1px;
+  background: #ffffff;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.hamburger__line:nth-child(1) {
+  width: calc(24 * var(--u));
+}
+
+.hamburger__line:nth-child(2) {
+  width: calc(18 * var(--u));
+}
+
+.hamburger__line:nth-child(3) {
+  width: calc(24 * var(--u));
+}
+
+.hamburger:hover .hamburger__line {
+  width: calc(24 * var(--u));
+  background: #D4AF37;
+}
+
+.phone-frame--profile .hamburger__line,
+.phone-frame--blog .hamburger__line {
+  background: #1A1A1A;
+}
+
+.phone-frame--profile .hamburger:hover .hamburger__line,
+.phone-frame--blog .hamburger:hover .hamburger__line {
+  background: #9E4137;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. NAVIGATION OVERLAY (OPTION TAB GLASSMORHPISM)
+   Frosted glass panel inside .phone-frame
+   ═══════════════════════════════════════════════════════════════════════════ */
+.nav-overlay,
+.menu-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 17, 23, 0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: inherit;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  overflow: hidden;
+}
+
+.nav-overlay--open,
+.menu-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Close Button — top right inside overlay ─────────────────────────────── */
+.nav-overlay__close,
+.menu-overlay__close {
+  position: absolute;
+  top: calc(16 * var(--u));
+  right: calc(20 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(11 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: calc(6 * var(--u)) 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-overlay__close-icon {
+  font-size: calc(13 * var(--u));
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.nav-overlay__close:hover,
+.menu-overlay__close:hover {
+  color: #D4AF37;
+  transform: translateX(calc(-2 * var(--u)));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. SLEEK, LEFT-ALIGNED NAVIGATION LINKS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.nav-overlay__nav,
+.menu-overlay__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: calc(40 * var(--u));
+  margin-top: auto;
+  margin-bottom: auto;
+  gap: calc(28 * var(--u));
+  width: 100%;
+}
+
+.nav-overlay__link,
+.menu-overlay__link {
+  font-family: 'Bodoni Moda', serif;
+  font-size: calc(18 * var(--u));
+  letter-spacing: calc(5 * var(--u));
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-overlay__link:hover,
+.menu-overlay__link:hover {
+  color: #D4AF37;
+  transform: translateX(calc(6 * var(--u)));
+}
+
+.nav-overlay__link--active,
+.menu-overlay__link--active,
+.nav-overlay__link.active,
+.menu-overlay__link.active {
+  color: #D4AF37;
+  transform: translateX(calc(6 * var(--u)));
+}
+
+/* ── Thin Left Accent Indicator Line ─────────────────────────────────────── */
+.nav-overlay__indicator {
+  display: inline-block;
+  width: calc(2 * var(--u));
+  height: 100%;
+  min-height: calc(18 * var(--u));
+  background: #D4AF37;
+  margin-right: calc(10 * var(--u));
+  flex-shrink: 0;
+}
+
+/* Fallback ::before support */
+.nav-overlay__link--active:not(:has(.nav-overlay__indicator))::before,
+.menu-overlay__link--active:not(:has(.nav-overlay__indicator))::before {
+  content: '';
+  display: inline-block;
+  width: calc(2 * var(--u));
+  height: 100%;
+  min-height: calc(18 * var(--u));
+  background: #D4AF37;
+  margin-right: calc(10 * var(--u));
+  flex-shrink: 0;
+}
+
+/* ── Bottom brand watermark ──────────────────────────────────────────────── */
+.nav-overlay__brand,
+.menu-overlay__brand {
+  position: absolute;
+  bottom: calc(36 * var(--u));
+  left: calc(40 * var(--u));
+  font-family: 'Bodoni Moda', serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 400;
+  letter-spacing: calc(6 * var(--u));
+  color: rgba(255, 255, 255, 0.18);
+  text-transform: uppercase;
+  pointer-events: none;
+}

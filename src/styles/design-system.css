@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — FURNITURE STUDIO GANGTOK
+   Premium Landing Page • 9:16 Mobile Frame on Desktop
+   Color palette referenced from Chinese traditional colors:
+     粉白 (Powder White), 砖红 (Brick Red), 唐茶 (Tang Tea),
+     蕉鹍 (Sage Green), 幽冥 (Deep Dark)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Root Design Tokens ─────────────────────────────────────────────── */
+:root {
+  /* ── Base Unit ─────────────────────────────────────────────────────
+     1u ≈ 1px at 430px frame width. Scales to actual frame size.    */
+  --u: 1px;
+
+  /* ── Color Palette (Chinese Traditional) ───────────────────────────
+     Derived from the reference palette image                        */
+  --clr-powder-white: #f5efe0;
+  --clr-brick-red:    #8c3a2b;
+  --clr-brick-red-l:  #a84d3c;
+  --clr-tang-tea:     #d4a95a;
+  --clr-tang-tea-l:   #e0be78;
+  --clr-sage-green:   #98b4a0;
+  --clr-sage-green-d: #7a9b84;
+  --clr-deep-dark:    #2c2421;
+  --clr-deep-dark-l:  #3d322e;
+
+  /* ── Derived Colors ────────────────────────────────────────────────── */
+  --clr-desktop-bg:   #080b11;
+  --clr-frame-shadow: rgba(0, 0, 0, 0.8);
+  --clr-white:        #ffffff;
+  --clr-white-soft:   rgba(255, 255, 255, 0.85);
+  --clr-white-muted:  rgba(255, 255, 255, 0.5);
+  --clr-accent:       var(--clr-tang-tea);
+  --clr-accent-light: var(--clr-tang-tea-l);
+
+  /* ── Typography ───────────────────────────────────────────────────── */
+  --ff-serif:     'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --ff-sans:      'Montserrat', 'Segoe UI', system-ui, sans-serif;
+
+  --fw-light:     300;
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semi:      600;
+
+  --lh-tight:     1.15;
+  --lh-snug:      1.3;
+  --lh-normal:    1.5;
+
+  --ls-normal:    0;
+  --ls-wide:      0.08em;
+  --ls-ultra:     0.2em;
+  --ls-mega:      0.35em;
+
+  /* ── Borders & Radius ─────────────────────────────────────────────── */
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-frame: 20px;
+  --radius-pill:  9999px;
+
+  /* ── Transitions ──────────────────────────────────────────────────── */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:       180ms;
+  --dur-normal:     350ms;
+  --dur-slow:       600ms;
+  --dur-entrance:   1000ms;
+}
+
+/* ── Global Resets ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--ff-sans);
+  font-size: 14px;
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--clr-white);
+  background-color: var(--clr-desktop-bg);
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Accessible focus ring ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Images & Video ────────────────────────────────────────────────── */
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Lists ──────────────────────────────────────────────────────────── */
+ul, ol {
+  list-style: none;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+::selection {
+  background: var(--clr-accent);
+  color: var(--clr-deep-dark);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-desktop-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-deep-dark-l);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DESKTOP WRAPPER — Dark background, centers the phone frame
+   ═══════════════════════════════════════════════════════════════════════ */
+.desktop-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-desktop-bg);
+  padding: 20px 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHONE FRAME — Central 9:16 container
+   Video, overlay, and all UI live inside this container.
+   ═══════════════════════════════════════════════════════════════════════ */
+.phone-frame {
+  position: relative;
+  width: min(100%, 430px);
+  height: min(92vh, 860px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  box-shadow: 0 20px 50px var(--clr-frame-shadow);
+  background-color: var(--clr-deep-dark);
+}
+
+/* ── Background Video (z-index: 0) ──────────────────────────────────── */
+.phone-frame__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ── Gradient Overlay (z-index: 1) ──────────────────────────────────── */
+.phone-frame__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(44, 36, 33, 0.65) 0%,
+    rgba(44, 36, 33, 0.25) 40%,
+    rgba(44, 36, 33, 0.20) 60%,
+    rgba(44, 36, 33, 0.70) 100%
+  );
+}
+
+/* ── Content Layer (z-index: 2) ─────────────────────────────────────── */
+.phone-frame__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHONE FRAME VARIANT — Collection Page (warm taupe background)
+   ═══════════════════════════════════════════════════════════════════════ */
+.phone-frame--collection {
+  background-color: #74716D;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHONE FRAME VARIANT — Profile Page (dark matte slate background)
+   ═══════════════════════════════════════════════════════════════════════ */
+.phone-frame--profile {
+  background-color: #E7DBCF;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHONE FRAME VARIANT — Blog Page (Paper Cream background #E7DBCF)
+   ═══════════════════════════════════════════════════════════════════════ */
+.phone-frame--blog {
+  background-color: #E7DBCF;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE STUB — Placeholder for future pages (Blog, Profile)
+   ═══════════════════════════════════════════════════════════════════════ */
+.page-stub {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.page-stub__title {
+  font-family: 'Bodoni Moda', 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: #F5F5F5;
+  text-transform: uppercase;
+}
+
+.page-stub__text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(11 * var(--u));
+  font-weight: 400;
+  letter-spacing: calc(4 * var(--u));
+  color: rgba(245, 245, 245, 0.6);
+  text-transform: uppercase;
+}
+
+.page-stub__pre {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(9 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(4 * var(--u));
+  color: #D2BD91;
+  text-transform: uppercase;
+}
+
+.page-stub__btn {
+  margin-top: calc(16 * var(--u));
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc(10 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(3 * var(--u));
+  color: #D2BD91;
+  border: calc(1 * var(--u)) solid rgba(210, 189, 145, 0.4);
+  padding: calc(10 * var(--u)) calc(20 * var(--u));
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-stub__btn:hover {
+  background: rgba(210, 189, 145, 0.15);
+  color: #ffffff;
+  border-color: #D2BD91;
+}
+
+/* ── Utility: sr-only ───────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

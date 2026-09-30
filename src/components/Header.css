@@ -1,0 +1,70 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER COMPONENT STYLES — FURNITURE STUDIO GANGTOK
+   Transparent Frosted Glass Header + Luxury Gold Gradient "FSG" Logo
+   Includes refined "The Seasons" style luxury subtext
+   Uses --u calc system for seamless fluid scaling
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: calc(16 * var(--u)) calc(20 * var(--u));
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* ── Branding Title (FSG Luxury Gold Gradient) ────────────────────────── */
+.header__branding {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  user-select: none;
+}
+
+.header__branding--clickable {
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.header__branding--clickable:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.header__title {
+  font-family: 'Bodoni Moda', 'Playfair Display', serif;
+  font-size: calc(22 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #AA7A1E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ── Luxury Header Subtext (The Seasons / Bodoni Moda Style) ──────────── */
+.header__subtext {
+  font-family: 'Bodoni Moda', 'Playfair Display', serif;
+  font-size: calc(9 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(4 * var(--u));
+  color: rgba(212, 175, 55, 0.75);
+  text-transform: uppercase;
+  margin-top: calc(2 * var(--u));
+  line-height: 1.2;
+  white-space: nowrap;
+}
